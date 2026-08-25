@@ -30,6 +30,8 @@ function TornadoClusterCard({
               onClick={() => onSelect(event)}
             >
               {event.date} — {event.vortexType}
+              <br />
+              {event.locality}, {event.province}
             </button>
           </li>
         ))}
