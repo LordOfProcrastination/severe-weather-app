@@ -17,6 +17,7 @@ import { Feature } from "ol";
 
 function WeatherMap() {
   const mapElement = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<Map | null>(null);
 
   const [selectedTornado, setSelectedTornado] = useState<TornadoEvent | null>(
     null,
@@ -39,6 +40,8 @@ function WeatherMap() {
         zoom: 4,
       }),
     });
+
+    mapRef.current = map;
     map.on("singleclick", (event) => {
       const feature = map.forEachFeatureAtPixel(
         event.pixel,
@@ -74,6 +77,29 @@ function WeatherMap() {
       }
     });
 
+    let hoveredFeature: Feature | null = null;
+
+    map.on("pointermove", (event) => {
+      const feature = map.forEachFeatureAtPixel(
+        event.pixel,
+        (feature) => feature as Feature,
+      );
+
+      if (hoveredFeature && hoveredFeature !== feature) {
+        hoveredFeature.set("hovered", false);
+        hoveredFeature.changed();
+      }
+
+      if (feature && feature !== hoveredFeature) {
+        feature.set("hovered", true);
+        feature.changed();
+      }
+
+      hoveredFeature = feature ?? null;
+
+      map.getTargetElement().style.cursor = feature ? "pointer" : "";
+    });
+
     getSinobasTornadoEvents()
       .then((events) => {
         const tornadoLayer = createTornadoLayer(events);
@@ -85,6 +111,7 @@ function WeatherMap() {
 
     return () => {
       map.setTarget(undefined);
+      mapRef.current = null;
     };
   }, []);
 
@@ -106,6 +133,12 @@ function WeatherMap() {
           onSelect={(event) => {
             setSelectedCluster(null);
             setSelectedTornado(event);
+
+            mapRef.current?.getView().animate({
+              center: fromLonLat([event.longitude, event.latitude]),
+              zoom: 10,
+              duration: 700,
+            });
           }}
         />
       )}

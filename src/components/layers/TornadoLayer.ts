@@ -15,7 +15,7 @@ import { fromLonLat } from "ol/proj";
 
 import type { TornadoEvent } from "../../interfaces/TornadoEvent";
 
-function getTornadoStyle(event: TornadoEvent) {
+function getTornadoStyle(event: TornadoEvent, hovered = false) {
   const iconSrc =
     event.vortexType === "Tromba Marina"
       ? "/icons/waterspout.png"
@@ -25,6 +25,7 @@ function getTornadoStyle(event: TornadoEvent) {
     image: new Icon({
       src: iconSrc,
       scale: 0.05,
+      opacity: hovered ? 0.6 : 1,
     }),
   });
 }
@@ -54,22 +55,23 @@ export function createTornadoLayer(events: TornadoEvent[]) {
 
     style: (feature) => {
       const clusteredFeatures = feature.get("features") as Feature[];
-
       const size = clusteredFeatures.length;
+
+      const hovered = feature.get("hovered") === true;
 
       if (size === 1) {
         const tornadoEvent = clusteredFeatures[0].get(
           "tornadoEvent",
         ) as TornadoEvent;
 
-        return getTornadoStyle(tornadoEvent);
+        return getTornadoStyle(tornadoEvent, hovered);
       }
 
       return new Style({
         image: new CircleStyle({
           radius: 18,
           fill: new Fill({
-            color: "#263746",
+            color: hovered ? "rgba(38, 55, 70, 0.6)" : "rgba(38, 55, 70, 1)",
           }),
           stroke: new Stroke({
             color: "#ffffff",
