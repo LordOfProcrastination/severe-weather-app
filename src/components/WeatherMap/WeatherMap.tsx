@@ -10,13 +10,19 @@ import { getSinobasTornadoEvents } from "../../services/sinobasService";
 
 import type { TornadoEvent } from "../../interfaces/TornadoEvent";
 import TornadoInfoCard from "../cards/TornadoInfoCard";
+import TornadoClusterCard from "../cards/TornadoClusterCard";
 
 import "./WeatherMap.css";
+import { Feature } from "ol";
 
 function WeatherMap() {
   const mapElement = useRef<HTMLDivElement>(null);
 
   const [selectedTornado, setSelectedTornado] = useState<TornadoEvent | null>(
+    null,
+  );
+
+  const [selectedCluster, setSelectedCluster] = useState<TornadoEvent[] | null>(
     null,
   );
 
@@ -41,15 +47,30 @@ function WeatherMap() {
 
       if (!feature) {
         setSelectedTornado(null);
+        setSelectedCluster(null);
         return;
       }
 
-      const tornadoEvent = feature.get("tornadoEvent") as
-        | TornadoEvent
+      const clusteredFeatures = feature.get("features") as
+        | Feature[]
         | undefined;
 
-      if (tornadoEvent) {
-        setSelectedTornado(tornadoEvent);
+      if (!clusteredFeatures) {
+        setSelectedTornado(null);
+        setSelectedCluster(null);
+        return;
+      }
+
+      const tornadoEvents = clusteredFeatures
+        .map((feature) => feature.get("tornadoEvent") as TornadoEvent)
+        .filter(Boolean);
+
+      if (tornadoEvents.length === 1) {
+        setSelectedCluster(null);
+        setSelectedTornado(tornadoEvents[0]);
+      } else {
+        setSelectedTornado(null);
+        setSelectedCluster(tornadoEvents);
       }
     });
 
@@ -75,6 +96,17 @@ function WeatherMap() {
         <TornadoInfoCard
           event={selectedTornado}
           onClose={() => setSelectedTornado(null)}
+        />
+      )}
+
+      {selectedCluster && (
+        <TornadoClusterCard
+          events={selectedCluster}
+          onClose={() => setSelectedCluster(null)}
+          onSelect={(event) => {
+            setSelectedCluster(null);
+            setSelectedTornado(event);
+          }}
         />
       )}
     </div>

@@ -1,4 +1,5 @@
 import "./TornadoInfoCard.css";
+import "../../styles/global.css";
 
 import type { TornadoEvent } from "../../interfaces/TornadoEvent";
 
@@ -9,9 +10,9 @@ interface TornadoInfoCardProps {
 
 function TornadoInfoCard({ event, onClose }: TornadoInfoCardProps) {
   return (
-    <div className="tornado-info-card">
+    <div className="weather-card tornado-info-card">
       <button
-        className="tornado-info-card__close"
+        className="weather-card_close"
         onClick={onClose}
         aria-label="Close tornado details"
       >

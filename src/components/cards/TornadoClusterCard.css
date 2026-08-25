@@ -1,0 +1,32 @@
+.tornado-cluster-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.tornado-cluster-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tornado-cluster-card li {
+  margin-bottom: 0.5rem;
+}
+
+.tornado-cluster-card li:last-child {
+  margin-bottom: 0;
+}
+
+.tornado-cluster-card__event {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f9fafb;
+  cursor: pointer;
+}
+
+.tornado-cluster-card__event:hover {
+  background: #f3f4f6;
+}
