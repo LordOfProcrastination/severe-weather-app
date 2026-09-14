@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Map from "ol/Map";
 import View from "ol/View";
-import TileLayer from "ol/layer/Tile";
-import OSM from "ol/source/OSM";
 import { fromLonLat } from "ol/proj";
 
 import { createTornadoLayer } from "../layers/TornadoLayer";
@@ -11,13 +9,17 @@ import { getSinobasTornadoEvents } from "../../services/sinobasService";
 import type { TornadoEvent } from "../../interfaces/TornadoEvent";
 import TornadoInfoCard from "../cards/TornadoInfoCard";
 import TornadoClusterCard from "../cards/TornadoClusterCard";
+import MapStyleSelector from "./MapStyleSelector";
 
 import "./WeatherMap.css";
 import { Feature } from "ol";
+import { createBaseLayers, MapStyle } from "../layers/BaseLayers";
 
 function WeatherMap() {
   const mapElement = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
+
+  const [mapStyle, setMapStyle] = useState<MapStyle>("standard");
 
   const [selectedTornado, setSelectedTornado] = useState<TornadoEvent | null>(
     null,
@@ -27,13 +29,22 @@ function WeatherMap() {
     null,
   );
 
+  const baseLayersRef = useRef<ReturnType<typeof createBaseLayers> | null>(
+    null,
+  );
+
   useEffect(() => {
+    const baseLayers = createBaseLayers();
+
+    baseLayersRef.current = baseLayers;
     const map = new Map({
       target: mapElement.current || undefined,
+
       layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
+        baseLayers.standard,
+        baseLayers.satellite,
+        baseLayers.terrain,
+        baseLayers.dark,
       ],
       view: new View({
         center: fromLonLat([10, 50]),
@@ -114,9 +125,22 @@ function WeatherMap() {
       mapRef.current = null;
     };
   }, []);
+  useEffect(() => {
+    const baseLayers = baseLayersRef.current;
+
+    if (!baseLayers) {
+      return;
+    }
+
+    baseLayers.standard.setVisible(mapStyle === "standard");
+    baseLayers.satellite.setVisible(mapStyle === "satellite");
+    baseLayers.terrain.setVisible(mapStyle === "terrain");
+    baseLayers.dark.setVisible(mapStyle === "dark");
+  }, [mapStyle]);
 
   return (
     <div className="weather-map-container">
+      <MapStyleSelector value={mapStyle} onChange={setMapStyle} />
       <div ref={mapElement} className="weather-map" />
 
       {selectedTornado && (
