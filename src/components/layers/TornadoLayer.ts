@@ -16,10 +16,12 @@ import { fromLonLat } from "ol/proj";
 import type { TornadoEvent } from "../../interfaces/TornadoEvent";
 
 function getTornadoStyle(event: TornadoEvent, hovered = false) {
+  const baseUrl = import.meta.env.BASE_URL;
+
   const iconSrc =
     event.vortexType === "Tromba Marina"
-      ? "/icons/waterspout.png"
-      : "/icons/hurricane.png";
+      ? `${baseUrl}icons/waterspout.png`
+      : `${baseUrl}icons/hurricane.png`;
 
   const opacity = hovered ? 0.6 : 1;
 
