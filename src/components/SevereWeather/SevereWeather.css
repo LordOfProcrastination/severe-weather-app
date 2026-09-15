@@ -1,0 +1,429 @@
+.severe-weather-page {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+
+.severe-weather-page__intro {
+  max-width: 750px;
+  margin-bottom: 32px;
+}
+
+.severe-weather-page__eyebrow,
+.weather-visualization__eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #5b8db8;
+}
+
+.severe-weather-page__intro h2 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.severe-weather-page__intro p {
+  line-height: 1.7;
+}
+
+/* --------------------------------
+   Weather system selection
+-------------------------------- */
+
+.weather-system-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.weather-system-card {
+  min-height: 150px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+
+  background: white;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.weather-system-card:hover {
+  transform: translateY(-3px);
+  border-color: #5b8db8;
+}
+
+.weather-system-card--active {
+  border: 2px solid #5b8db8;
+  background: #f5f9fc;
+}
+
+.weather-system-card strong {
+  font-size: 1.05rem;
+}
+
+.weather-system-card span {
+  color: #606060;
+  line-height: 1.45;
+}
+
+/* --------------------------------
+   Visualization shell
+-------------------------------- */
+
+.weather-visualization {
+  border: 1px solid #dedede;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+}
+
+.weather-visualization__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 28px 32px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.weather-visualization__header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.weather-visualization__header > p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.weather-visualization__eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #5b8db8;
+}
+
+/* --------------------------------
+   Diagram
+-------------------------------- */
+
+.supercell-diagram {
+  width: 100%;
+  background: transparent;
+}
+
+.supercell-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.supercell-ground {
+  stroke: #586652;
+  stroke-width: 4;
+}
+
+/* --------------------------------
+   Storm structure
+-------------------------------- */
+
+.supercell-cloud {
+  filter: drop-shadow(0 12px 14px rgba(45, 53, 61, 0.14));
+}
+
+.supercell-cloud-highlight {
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.rain-core {
+  pointer-events: none;
+}
+
+.wall-cloud {
+  fill: #4b525d;
+  opacity: 0.78;
+}
+
+/* --------------------------------
+   Airflow
+-------------------------------- */
+
+.airflow-path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.airflow-path--updraft {
+  stroke: #dd7440;
+  stroke-width: 7;
+  stroke-dasharray: 12 10;
+}
+
+.airflow-path--inflow {
+  stroke: #5e8fbd;
+  stroke-width: 6;
+  stroke-dasharray: 10 8;
+}
+
+.air-particle {
+  fill: #f0a65f;
+  filter: drop-shadow(0 0 4px rgba(240, 166, 95, 0.55));
+}
+
+/* --------------------------------
+   Rotation
+-------------------------------- */
+
+.rotation-ring {
+  fill: none;
+  stroke: #dc6f59;
+  stroke-width: 5;
+  stroke-dasharray: 12 8;
+}
+
+.rotation-ring--inner {
+  stroke-width: 3;
+}
+
+.rotation-arrow {
+  fill: none;
+  stroke: #d36e55;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 10 7;
+}
+
+.low-level-rotation {
+  fill: none;
+  stroke: #c35343;
+  stroke-width: 4;
+  stroke-dasharray: 8 6;
+}
+
+/* --------------------------------
+   Tornado
+-------------------------------- */
+
+.tornado-funnel {
+  fill: none;
+  stroke: #3f444b;
+  stroke-width: 14;
+  stroke-linecap: round;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(50, 50, 50, 0.18));
+}
+
+/* --------------------------------
+   Lightning
+-------------------------------- */
+
+.lightning-bolt {
+  fill: none;
+  stroke: #fff3a8;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px rgba(255, 244, 173, 0.95));
+}
+
+.lightning-flash {
+  fill: #ffffff;
+  pointer-events: none;
+}
+
+.lightning-glow {
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* --------------------------------
+   Labels
+-------------------------------- */
+
+.weather-label {
+  font-size: 18px;
+  font-weight: 700;
+  fill: #1f262d;
+  paint-order: stroke;
+  stroke: rgba(237, 241, 243, 0.9);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.weather-label--warm {
+  fill: #b65a33;
+}
+
+.weather-label--cold {
+  fill: #3e6e97;
+}
+
+.wind-label {
+  font-size: 16px;
+  font-weight: 700;
+  fill: #385a77;
+  paint-order: stroke;
+  stroke: rgba(237, 241, 243, 0.88);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* --------------------------------
+   Stage navigation
+-------------------------------- */
+
+.storm-stage-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 20px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fafafa;
+}
+
+.storm-stage-button {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #c7c7c7;
+  border-radius: 50%;
+  background: white;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.storm-stage-button:hover {
+  transform: translateY(-2px);
+  border-color: #5b8db8;
+}
+
+.storm-stage-button--complete {
+  border-color: #8ab0d0;
+  background: #edf5fb;
+}
+
+.storm-stage-button--active {
+  border-color: #5b8db8;
+  background: #5b8db8;
+  color: white;
+}
+
+/* --------------------------------
+   Stage information
+-------------------------------- */
+
+.storm-stage-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  padding: 30px 32px;
+}
+
+.storm-stage-info__text {
+  max-width: 700px;
+}
+
+.storm-stage-info__text span {
+  display: block;
+  margin-bottom: 6px;
+  color: #5b8db8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.storm-stage-info__text h4 {
+  margin: 0 0 10px;
+  font-size: 1.45rem;
+}
+
+.storm-stage-info__text p {
+  margin: 0;
+  color: #555;
+  line-height: 1.65;
+}
+
+.storm-stage-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.storm-stage-controls button {
+  padding: 10px 16px;
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.storm-stage-controls button:hover:not(:disabled) {
+  border-color: #5b8db8;
+}
+
+.storm-stage-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* --------------------------------
+   Responsive
+-------------------------------- */
+
+@media (max-width: 900px) {
+  .weather-visualization__header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .storm-stage-navigation {
+    gap: 7px;
+  }
+
+  .storm-stage-button {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  .storm-stage-info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .storm-stage-controls {
+    justify-content: space-between;
+  }
+}

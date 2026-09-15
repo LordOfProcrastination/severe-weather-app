@@ -21,13 +21,32 @@ function getTornadoStyle(event: TornadoEvent, hovered = false) {
       ? "/icons/waterspout.png"
       : "/icons/hurricane.png";
 
-  return new Style({
-    image: new Icon({
-      src: iconSrc,
-      scale: 0.05,
-      opacity: hovered ? 0.6 : 1,
+  const opacity = hovered ? 0.6 : 1;
+
+  return [
+    new Style({
+      image: new CircleStyle({
+        radius: 14,
+        fill: new Fill({
+          color: hovered
+            ? "rgba(255, 255, 255, 0.55)"
+            : "rgba(255, 255, 255, 0.8)",
+        }),
+        stroke: new Stroke({
+          color: "rgba(38, 55, 70, 0.8)",
+          width: 1.5,
+        }),
+      }),
     }),
-  });
+
+    new Style({
+      image: new Icon({
+        src: iconSrc,
+        scale: 0.05,
+        opacity,
+      }),
+    }),
+  ];
 }
 
 export function createTornadoLayer(events: TornadoEvent[]) {
