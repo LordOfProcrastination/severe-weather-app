@@ -241,7 +241,7 @@ function SupercellVisualization() {
         createAirParticles(svg, pathNode);
       }
 
-      appendLabel(svg, "Strong updraft", 422, 300, "weather-label");
+      appendLabel(svg, "Strong updraft", 260, 315, "weather-label");
     }
 
     /*
