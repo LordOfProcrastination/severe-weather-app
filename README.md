@@ -1,4 +1,4 @@
-# severe-weather-
+# severe-weather
 
 https://lordofprocrastination.github.io/severe-weather-app/
 
