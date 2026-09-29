@@ -1,6 +1,6 @@
 # severe-weather-
 
-https://lordofprocrastination.github.io/severe-weather-app/ut
+https://lordofprocrastination.github.io/severe-weather-app/
 
 ## Data Sources
 
