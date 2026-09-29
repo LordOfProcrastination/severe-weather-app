@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 
 import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage";
@@ -14,6 +14,7 @@ function App() {
         <Route path="/" element={<MapPage />} />
         <Route path="/severe-weather" element={<SevereWeatherPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   );

@@ -34,7 +34,14 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        env:
+          VITE_MAPTILER_KEY: ${{ secrets.VITE_MAPTILER_KEY }}
+        run: |
+          if [ -z "$VITE_MAPTILER_KEY" ]; then
+            echo "::error::Add the VITE_MAPTILER_KEY repository secret before deploying."
+            exit 1
+          fi
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
