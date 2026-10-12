@@ -124,19 +124,6 @@ The data is transformed into a common event format, making it easier to integrat
 
 Source: [AEMET SINOBAS](https://sinobas.aemet.es/)
 
-## 🔭 What's Next?
-
-This is an ongoing personal project, and there are several areas I'd like to continue exploring:
-
-- Expand the map with tornado reports from more European countries.
-- Add more interactive weather visualizations.
-- Improve the experience of exploring historical severe weather events.
-- Continue refining the interface, accessibility, and mobile experience.
-
-The idea is to keep learning, experimenting, and gradually turn the application into a more comprehensive resource for exploring severe weather in Europe.
-
----
-
 **🌪️ [Try the Severe Weather Explorer](https://lordofprocrastination.github.io/severe-weather-app/)**
 
 _Built out of curiosity, an interest in meteorology, and a love for creating interactive applications._
