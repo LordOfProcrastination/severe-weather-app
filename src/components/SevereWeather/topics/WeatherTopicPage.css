@@ -1,0 +1,57 @@
+.weather-topic__disclaimer {
+  margin: 0;
+  padding: 0 32px 24px;
+  color: #606060;
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.weather-topic__table {
+  overflow-x: auto;
+}
+
+.weather-topic table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+.weather-topic caption {
+  text-align: left;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.weather-topic th,
+.weather-topic td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #dedede;
+}
+
+.weather-topic thead {
+  background: #f5f9fc;
+}
+
+@media (max-width: 500px) {
+  .weather-topic .weather-visualization__header,
+  .weather-topic .storm-stage-info {
+    padding: 24px 20px;
+  }
+
+  .weather-topic__disclaimer {
+    padding: 0 20px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-topic .storm-stage-button {
+    transition: none;
+  }
+
+  .weather-topic .storm-stage-button:hover {
+    transform: none;
+  }
+}

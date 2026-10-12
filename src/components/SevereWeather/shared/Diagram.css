@@ -1,0 +1,73 @@
+.supercell-diagram {
+  width: 100%;
+  background: transparent;
+}
+
+.supercell-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.supercell-cloud {
+  filter: drop-shadow(0 12px 14px rgba(45, 53, 61, 0.14));
+}
+
+.airflow-path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.airflow-path--updraft {
+  stroke: #dd7440;
+  stroke-width: 7;
+  stroke-dasharray: 12 10;
+}
+
+.airflow-path--inflow {
+  stroke: #5e8fbd;
+  stroke-width: 6;
+  stroke-dasharray: 10 8;
+}
+
+.rotation-ring {
+  fill: none;
+  stroke: #dc6f59;
+  stroke-width: 5;
+  stroke-dasharray: 12 8;
+}
+
+.low-level-rotation {
+  fill: none;
+  stroke: #c35343;
+  stroke-width: 4;
+  stroke-dasharray: 8 6;
+}
+
+.weather-label {
+  font-size: 18px;
+  font-weight: 700;
+  fill: #1f262d;
+  paint-order: stroke;
+  stroke: rgba(237, 241, 243, 0.9);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.weather-label--warm {
+  fill: #b65a33;
+}
+
+.weather-label--cold {
+  fill: #3e6e97;
+}
+
+.wind-label {
+  font-size: 16px;
+  font-weight: 700;
+  fill: #385a77;
+  paint-order: stroke;
+  stroke: rgba(237, 241, 243, 0.88);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}

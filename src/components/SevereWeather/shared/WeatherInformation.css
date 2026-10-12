@@ -1,0 +1,44 @@
+.weather-topic__section {
+  padding: 28px 32px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.weather-topic__section h4 {
+  margin: 0 0 12px;
+  font-size: 1.45rem;
+}
+
+.weather-topic__section p,
+.weather-topic__section li {
+  max-width: 80ch;
+  color: #555;
+  line-height: 1.7;
+}
+
+.weather-topic__section p:last-child {
+  margin-bottom: 0;
+}
+
+.weather-topic__section a {
+  color: #35668e;
+  text-underline-offset: 3px;
+}
+
+.weather-topic__sources {
+  background: #fafafa;
+}
+
+.weather-topic__sources li + li {
+  margin-top: 8px;
+}
+
+.weather-topic__section a:focus-visible {
+  outline: 3px solid #35668e;
+  outline-offset: 4px;
+}
+
+@media (max-width: 500px) {
+  .weather-topic__section {
+    padding: 24px 20px;
+  }
+}

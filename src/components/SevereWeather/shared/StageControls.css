@@ -1,0 +1,122 @@
+.storm-stage-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 20px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fafafa;
+}
+
+.storm-stage-button {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #c7c7c7;
+  border-radius: 50%;
+  background: white;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.storm-stage-button:hover {
+  transform: translateY(-2px);
+  border-color: #5b8db8;
+}
+
+.storm-stage-button--complete {
+  border-color: #8ab0d0;
+  background: #edf5fb;
+}
+
+.storm-stage-button--active {
+  border-color: #5b8db8;
+  background: #5b8db8;
+  color: white;
+}
+
+.storm-stage-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  padding: 30px 32px;
+}
+
+.storm-stage-info__text {
+  max-width: 700px;
+}
+
+.storm-stage-info__text span {
+  display: block;
+  margin-bottom: 6px;
+  color: #5b8db8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.storm-stage-info__text h4 {
+  margin: 0 0 10px;
+  font-size: 1.45rem;
+}
+
+.storm-stage-info__text p {
+  margin: 0;
+  color: #555;
+  line-height: 1.65;
+}
+
+.storm-stage-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.storm-stage-controls button {
+  padding: 10px 16px;
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.storm-stage-controls button:hover:not(:disabled) {
+  border-color: #5b8db8;
+}
+
+.storm-stage-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (max-width: 700px) {
+  .storm-stage-navigation {
+    gap: 7px;
+  }
+
+  .storm-stage-button {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  .storm-stage-info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .storm-stage-controls {
+    justify-content: space-between;
+  }
+}

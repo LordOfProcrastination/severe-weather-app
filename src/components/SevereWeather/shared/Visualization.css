@@ -1,0 +1,50 @@
+.weather-visualization__eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #5b8db8;
+}
+
+.weather-visualization {
+  border: 1px solid #dedede;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+}
+
+.weather-visualization__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 28px 32px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.weather-visualization__header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.weather-visualization__header > p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.weather-visualization__eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #5b8db8;
+}
+
+@media (max-width: 900px) {
+  .weather-visualization__header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

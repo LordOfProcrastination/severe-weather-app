@@ -1,4 +1,42 @@
-.weather-map {
-  width: 100%;
-  height: 70vh;
+.weather-map-container { border: 1px solid #dce3e9; border-radius: 16px; background: white; overflow: hidden; box-shadow: 0 4px 20px rgba(31, 41, 51, 0.04); }
+.weather-map__toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 24px; border-bottom: 1px solid #dce3e9; }
+.weather-map__dataset h3 { margin: 0 0 5px; font-size: 1rem; }
+.weather-map__dataset p { margin: 0; color: #687785; font-size: 0.8rem; }
+.weather-map__tools { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.weather-map__button { min-height: 42px; padding: 10px 14px; border: 1px solid #d4dee7; border-radius: 8px; background: white; color: #385a77; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+.weather-map__button:hover { border-color: #5b8db8; background: #f5f9fc; }
+.weather-map__tile-error { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 24px; border-bottom: 1px solid #e4d6b8; background: #fffaf0; color: #70582b; }
+.weather-map__tile-error p { margin: 0; font-size: 0.85rem; line-height: 1.6; }
+.weather-map__canvas { position: relative; background: #dce6ea; }
+.weather-map { width: 100%; height: clamp(460px, 62vh, 720px); }
+.weather-map:focus-visible { outline: 3px solid #35668e; outline-offset: -3px; }
+.weather-map__message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(340px, calc(100% - 80px)); padding: 24px; border: 1px solid #dce3e9; border-radius: 12px; background: white; box-shadow: 0 6px 24px rgba(31, 41, 51, 0.12); text-align: center; }
+.weather-map__message p { color: #64717e; font-size: 0.9rem; line-height: 1.6; }
+.weather-map__legend { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 24px; border-top: 1px solid #dce3e9; }
+.weather-map__legend ul { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding: 0; margin: 0; list-style: none; }
+.weather-map__legend li { display: flex; align-items: center; gap: 8px; color: #536473; font-size: 0.8rem; }
+.weather-map__legend img { width: 24px; height: 24px; object-fit: contain; }
+.weather-map__cluster-key { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #263746; color: white; font-size: 0.7rem; }
+.weather-map__browse { border: 0; background: transparent; color: #35668e; font-weight: 600; font-size: 0.85rem; cursor: pointer; padding: 10px 0; }
+.weather-map__browse:hover:not(:disabled) { text-decoration: underline; text-underline-offset: 4px; }
+.weather-map__browse:disabled { opacity: 0.5; cursor: default; }
+.weather-map__footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 12px 24px; background: #f8fafb; border-top: 1px solid #e7ebef; font-size: 0.75rem; line-height: 1.6; color: #64717e; }
+.weather-map__footer p { margin: 0; max-width: 80ch; }
+.weather-map__footer span { flex-shrink: 0; }
+
+/* Keep OpenLayers controls and provider attribution visible inside the map. */
+.weather-map .ol-zoom { top: 16px; left: 16px; padding: 4px; border-radius: 10px; background: white; box-shadow: 0 2px 12px rgba(31, 41, 51, 0.15); }
+.weather-map .ol-zoom button { width: 36px; height: 36px; margin: 0; border-radius: 6px; color: #385a77; background: white; font-size: 1.3rem; }
+.weather-map .ol-zoom button:hover { background: #edf5fb; }
+.weather-map .ol-attribution { max-width: calc(100% - 16px); border-radius: 6px 0 0 0; background: rgba(255, 255, 255, 0.92); font-size: 11px; }
+.weather-map .ol-attribution ul { white-space: normal; }
+.weather-map .ol-attribution a { color: #35668e; }
+
+@media (max-width: 600px) {
+  .weather-map__toolbar { padding: 16px; gap: 16px; }
+  .weather-map__tools { width: 100%; }
+  .weather-map { height: 520px; }
+  .weather-map__legend { padding: 12px 16px; gap: 8px; }
+  .weather-map__legend ul { gap: 12px; }
+  .weather-map__footer { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 16px; }
 }

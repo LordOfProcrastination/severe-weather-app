@@ -1,0 +1,69 @@
+.weather-system-selector {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.weather-system-card {
+  min-height: 150px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.weather-system-card:hover {
+  transform: translateY(-3px);
+  border-color: #5b8db8;
+}
+
+.weather-system-card--active {
+  border: 2px solid #5b8db8;
+  background: #f5f9fc;
+}
+
+.weather-system-card strong {
+  font-size: 1.05rem;
+}
+
+.weather-system-card span {
+  color: #606060;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .weather-system-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .weather-system-selector {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .weather-system-card {
+    min-height: auto;
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-system-card {
+    transition: none;
+  }
+
+  .weather-system-card:hover {
+    transform: none;
+  }
+}

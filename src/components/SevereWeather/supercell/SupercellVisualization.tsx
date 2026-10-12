@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import WeatherInformation from "../shared/WeatherInformation";
+import supercellInformation from "../data/supercell";
+import "../shared/Visualization.css";
+import "../shared/StageControls.css";
+import "../shared/Diagram.css";
+import "./SupercellVisualization.css";
 
 interface SupercellStage {
   id: number;
@@ -364,6 +370,7 @@ function SupercellVisualization() {
           </button>
         </div>
       </div>
+      <WeatherInformation {...supercellInformation} />
     </article>
   );
 }

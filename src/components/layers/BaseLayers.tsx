@@ -1,6 +1,7 @@
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import XYZ from "ol/source/XYZ";
+import { loadCheckedTile } from "./loadCheckedTile";
 
 export type MapStyle = "standard" | "satellite" | "terrain" | "dark";
 
@@ -12,6 +13,7 @@ export function createBaseLayers() {
 
   const satellite = new TileLayer({
     source: new XYZ({
+      tileLoadFunction: loadCheckedTile,
       url: `https://api.maptiler.com/maps/satellite/{z}/{x}/{y}.jpg?key=${
         import.meta.env.VITE_MAPTILER_KEY
       }`,
@@ -32,6 +34,7 @@ export function createBaseLayers() {
 
   const dark = new TileLayer({
     source: new XYZ({
+      tileLoadFunction: loadCheckedTile,
       url: `https://api.maptiler.com/maps/dataviz-dark/{z}/{x}/{y}.png?key=${
         import.meta.env.VITE_MAPTILER_KEY
       }`,

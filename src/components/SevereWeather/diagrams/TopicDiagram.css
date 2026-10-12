@@ -1,0 +1,50 @@
+.topic-diagram__note {
+  font-size: 16px;
+  fill: #334b5c;
+}
+
+.topic-diagram__stage {
+  animation: topic-reveal .35s ease-out;
+}
+
+.topic-flow {
+  animation: topic-airflow 1.5s linear 3;
+}
+
+@keyframes topic-reveal {
+  from {
+    opacity: .3;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes topic-airflow {
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+.topic-diagram:focus-visible {
+  outline: 3px solid #35668e;
+  outline-offset: -3px;
+}
+
+@media (max-width: 500px) {
+  .topic-diagram {
+    overflow-x: auto;
+  }
+
+  .topic-diagram svg {
+    min-width: 640px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-diagram__stage,
+  .topic-flow {
+    animation: none;
+  }
+}

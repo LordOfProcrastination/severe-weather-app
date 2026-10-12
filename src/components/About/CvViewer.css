@@ -1,0 +1,86 @@
+.cv-viewer {
+  width: min(1100px, calc(100% - 40px));
+  height: min(920px, calc(100dvh - 40px));
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 1px solid #dedede;
+  border-radius: 16px;
+  background: white;
+  color: #1f2933;
+  overflow: hidden;
+  box-shadow: 0 20px 70px rgba(31, 41, 51, 0.25);
+}
+
+.cv-viewer::backdrop {
+  background: rgba(31, 41, 51, 0.65);
+}
+
+.cv-viewer__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.cv-viewer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.cv-viewer__eyebrow {
+  margin: 0 0 6px;
+  color: #35668e;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cv-viewer__header h2 { margin: 0; font-size: 1.5rem; }
+.cv-viewer__close { flex-shrink: 0; }
+.cv-viewer__close span { margin-left: 8px; font-size: 1.3rem; }
+
+.cv-viewer__close,
+.cv-viewer__download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  background: white;
+  color: #35668e;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cv-viewer__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 16px 24px;
+  background: #f5f9fc;
+}
+
+.cv-viewer__toolbar a,
+.cv-viewer__fallback a { color: #35668e; text-underline-offset: 3px; }
+.cv-viewer__toolbar p { flex-basis: 100%; margin: 0; color: #555; font-size: 0.85rem; line-height: 1.5; }
+.cv-viewer__download { background: white; }
+.cv-viewer__pdf { display: block; flex: 1; width: 100%; min-height: 240px; border: 0; background: #e5e5e5; }
+.cv-viewer__fallback { padding: 24px; line-height: 1.7; }
+.cv-viewer button:hover, .cv-viewer__download:hover { border-color: #5b8db8; background: #edf5fb; }
+.cv-viewer :is(a, button):focus-visible { outline: 3px solid #35668e; outline-offset: 3px; }
+
+@media (max-width: 600px) {
+  .cv-viewer { width: calc(100% - 16px); height: calc(100dvh - 16px); border-radius: 12px; }
+  .cv-viewer__header, .cv-viewer__toolbar { padding: 16px; }
+  .cv-viewer__header { gap: 12px; }
+}

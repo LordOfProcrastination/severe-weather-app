@@ -1,4 +1,5 @@
-import type { WeatherSystem } from "../../pages/SevereWeatherPage";
+import type { WeatherSystem } from "../types";
+import "./WeatherSystemSelector.css";
 
 interface WeatherSystemSelectorProps {
   selectedSystem: WeatherSystem;
@@ -17,21 +18,26 @@ const systems: {
       "A rotating thunderstorm capable of producing strong and violent tornadoes.",
   },
   {
-    id: "qlcs",
-    title: "QLCS",
+    id: "tornadoes",
+    title: "Tornadoes",
     description:
-      "A line of thunderstorms where small areas of rotation can sometimes produce tornadoes.",
+      "Formation, lifecycle and damage ratings, from supercells to landspouts and squall lines.",
   },
   {
-    id: "landspout",
-    title: "Landspout",
+    id: "thunderstorms",
+    title: "Thunderstorms",
     description:
-      "A tornado that develops from rotation near the ground rather than from a rotating mesocyclone.",
+      "Moisture, instability and lift: follow the lifecycle of a thunderstorm.",
   },
   {
     id: "waterspout",
     title: "Waterspout",
     description: "A rotating column of air that develops over water.",
+  },
+  {
+    id: "europe",
+    title: "Severe Weather in Europe",
+    description: "Seasonal patterns, geography and what historical reports can tell us.",
   },
 ];
 
@@ -40,7 +46,7 @@ function WeatherSystemSelector({
   onSelect,
 }: WeatherSystemSelectorProps) {
   return (
-    <section className="weather-system-selector">
+    <section className="weather-system-selector" aria-label="Severe weather topics">
       {systems.map((system) => (
         <button
           key={system.id}
@@ -48,6 +54,7 @@ function WeatherSystemSelector({
             selectedSystem === system.id ? "weather-system-card--active" : ""
           }`}
           onClick={() => onSelect(system.id)}
+          aria-pressed={selectedSystem === system.id}
         >
           <strong>{system.title}</strong>
           <span>{system.description}</span>

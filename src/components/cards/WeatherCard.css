@@ -1,0 +1,29 @@
+.weather-card {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 360px;
+  max-width: calc(100% - 80px);
+  max-height: calc(100% - 64px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px;
+  border: 1px solid #d4dee7;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 8px 30px rgba(31, 41, 51, 0.18);
+  z-index: 10;
+  scrollbar-width: thin;
+}
+
+.weather-card__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.weather-card__eyebrow { margin: 0; color: #35668e; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.weather-card_close { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; height: 36px; border: 1px solid #e0e6eb; border-radius: 8px; background: #f8fafb; color: #536473; font-size: 1.4rem; cursor: pointer; }
+.weather-card_close:hover { background: #edf5fb; border-color: #5b8db8; }
+.weather-card h3 { margin: 0 0 8px; font-size: 1.3rem; }
+.weather-card h3:focus { outline: none; }
+.weather-card :is(button, a, input):focus-visible { outline: 3px solid #35668e; outline-offset: 2px; }
+
+@media (max-width: 600px) {
+  .weather-card { top: auto; bottom: 38px; left: 10px; right: 10px; width: auto; max-width: none; max-height: 62%; padding: 16px; }
+}

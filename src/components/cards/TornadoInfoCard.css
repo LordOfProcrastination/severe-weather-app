@@ -1,20 +1,9 @@
-.tornado-info-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.tornado-info-card p {
-  margin: 0.5rem 0;
-  line-height: 1.4;
-}
-
-.tornado-info-card a {
-  display: inline-block;
-  margin-top: 0.75rem;
-}
-
-.tornado-info-card__language {
-  margin-top: -0.25rem;
-  font-size: 0.8rem;
-  color: #666;
-}
+.tornado-info-card__location { margin: 0 0 20px; color: #687785; font-size: 0.85rem; line-height: 1.6; }
+.tornado-info-card__details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0; padding: 16px; border: 1px solid #e4eaf0; border-radius: 10px; background: #f8fafb; }
+.tornado-info-card__details dt { margin-bottom: 4px; font-size: 0.75rem; color: #687785; }
+.tornado-info-card__details dd { margin: 0; font-size: 0.85rem; font-weight: 600; overflow-wrap: anywhere; }
+.tornado-info-card__description { margin-top: 20px; }
+.tornado-info-card__description h4 { margin: 0 0 6px; font-size: 0.9rem; }
+.tornado-info-card__description p { color: #536473; font-size: 0.85rem; line-height: 1.7; overflow-wrap: anywhere; }
+.tornado-info-card__description .tornado-info-card__language { margin: 0; font-size: 0.75rem; color: #687785; }
+.tornado-info-card__source { display: block; margin-top: 20px; padding-top: 16px; border-top: 1px solid #e7ebef; color: #35668e; font-size: 0.85rem; font-weight: 600; text-underline-offset: 3px; }

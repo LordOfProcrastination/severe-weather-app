@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MapPage />} />
         <Route path="/severe-weather" element={<SevereWeatherPage />} />
+        <Route path="/severe-weather/:topic" element={<SevereWeatherPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
